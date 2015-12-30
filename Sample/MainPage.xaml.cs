@@ -26,15 +26,42 @@ namespace Sample
         public MainPage()
         {
             this.InitializeComponent();
+            InitAnimList();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private List<CustomAnim> CustomAnims = new List<CustomAnim>();
+
+        private void InitAnimList()
         {
-            Animator.Use(AnimationType.Bounce)
-                .SetDelay(TimeSpan.FromMilliseconds(2000))
-                .SetDuration(TimeSpan.FromMilliseconds(2000))
-                .SetRepeatBehavior(new Windows.UI.Xaml.Media.Animation.RepeatBehavior(3))
-                .PlayOn(Text);
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = "Bounce",
+                ClickAction = ()=> {
+                    Animator.Use(AnimationType.Bounce).PlayOn(AnimText);
+                }
+            });
+
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = "Flash",
+                ClickAction = () => {
+                    Animator.Use(AnimationType.Flash).PlayOn(AnimText);
+                }
+            });
+
+            AnimList.ItemsSource = CustomAnims;
         }
+
+        private void AnimList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ((sender as ListViewItem).DataContext as CustomAnim).ClickAction();
+        }
+    }
+
+    internal class CustomAnim
+    {
+        public string Name { get; set; }
+
+        public Action ClickAction { get; set; }
     }
 }

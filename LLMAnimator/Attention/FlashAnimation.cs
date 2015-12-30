@@ -20,26 +20,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
 namespace LLM.Attention
 {
-    public class BounceAnimation : AnimationBase
+    public class FlashAnimation : AnimationBase
     {
-        public BounceAnimation()
+        public FlashAnimation()
         {
+            RepeatBehavior = new RepeatBehavior(2);
             Duration = TimeSpan.FromMilliseconds(800);
         }
 
         public override void PlayOn(UIElement target, Action ContinueWith)
         {
-            var transform = AnimUtils.PrepareTransform(target, typeof(TranslateTransform));
-
             Storyboard storyboard = new Storyboard();
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "Y", ContinueWith);
-
+            AddAnimationToStoryboard(storyboard, target, CreateAnimation(), "Opacity", ContinueWith);
+            
             storyboard.Begin();
         }
 
@@ -53,19 +51,17 @@ namespace LLM.Attention
                 {
                     EasingMode = EasingMode.EaseIn
                 },
-                KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(100)),
-                Value = -8,
+                KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(Duration.Milliseconds / 2)),
+                Value = 0,
             });
             frames.KeyFrames.Add(new EasingDoubleKeyFrame()
             {
-                EasingFunction = new BounceEase()
+                EasingFunction = new SineEase()
                 {
-                    Bounces = 2,
-                    Bounciness = 1.3,
-                    EasingMode = EasingMode.EaseOut
+                    EasingMode = EasingMode.EaseIn
                 },
-                KeyTime = KeyTime.FromTimeSpan(Duration),
-                Value = 0,
+                KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(Duration.Milliseconds / 2)),
+                Value = 1,
             });
 
             return frames;

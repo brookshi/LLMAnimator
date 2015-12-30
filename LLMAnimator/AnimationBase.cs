@@ -61,5 +61,21 @@ namespace LLM
             RepeatBehavior = repeatBehavior;
             return this;
         }
+
+        public void AddAnimationToStoryboard(Storyboard storyboard, DependencyObject target, Timeline anim, string property, Action ContinueWith)
+        {
+            storyboard.Children.Add(anim);
+
+            Storyboard.SetTarget(anim, target);
+            Storyboard.SetTargetProperty(anim, property);
+
+            storyboard.Completed += (s, e) =>
+            {
+                if (ContinueWith != null)
+                    ContinueWith();
+            };
+            storyboard.BeginTime = Delay;
+            storyboard.RepeatBehavior = RepeatBehavior;
+        }
     }
 }

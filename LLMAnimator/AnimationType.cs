@@ -25,5 +25,6 @@ namespace LLM
     public enum AnimationType
     {
         Bounce,
+        Flash,
     }
 }

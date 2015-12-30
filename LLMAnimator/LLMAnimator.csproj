@@ -7,7 +7,7 @@
     <ProjectGuid>{4CD81BFB-D12E-4FAC-92A8-DA69458F9212}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LLMAnimator</RootNamespace>
+    <RootNamespace>LLM</RootNamespace>
     <AssemblyName>LLMAnimator</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -117,6 +117,7 @@
     <Compile Include="AnimUtils.cs" />
     <Compile Include="Attention\BounceAnimation.cs" />
     <Compile Include="Animator.cs" />
+    <Compile Include="Attention\FlashAnimation.cs" />
     <Compile Include="IAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AnimationType.cs" />

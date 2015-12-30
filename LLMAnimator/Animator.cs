@@ -21,6 +21,8 @@ namespace LLM
             {
                 case AnimationType.Bounce:
                     return new BounceAnimation();
+                case AnimationType.Flash:
+                    return new FlashAnimation();
             }
 
             return null;
