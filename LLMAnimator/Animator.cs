@@ -23,6 +23,8 @@ namespace LLM
                     return new BounceAnimation();
                 case AnimationType.Flash:
                     return new FlashAnimation();
+                case AnimationType.Pulse:
+                    return new PulseAnimation();
             }
 
             return null;

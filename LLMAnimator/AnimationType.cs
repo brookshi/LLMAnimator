@@ -26,5 +26,6 @@ namespace LLM
     {
         Bounce,
         Flash,
+        Pulse
     }
 }

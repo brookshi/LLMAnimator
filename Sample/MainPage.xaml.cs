@@ -49,12 +49,20 @@ namespace Sample
                 }
             });
 
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = "Pulse",
+                ClickAction = () => {
+                    Animator.Use(AnimationType.Pulse).SetRepeatBehavior(new Windows.UI.Xaml.Media.Animation.RepeatBehavior(2)).PlayOn(AnimText);
+                }
+            });
+
             AnimList.ItemsSource = CustomAnims;
         }
 
         private void AnimList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ((sender as ListViewItem).DataContext as CustomAnim).ClickAction();
+            (e.ClickedItem as CustomAnim).ClickAction();
         }
     }
 
