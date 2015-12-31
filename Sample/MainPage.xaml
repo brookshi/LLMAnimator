@@ -12,15 +12,16 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="AnimText"
+                   Margin="50, 0, 0, 0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
                    FontSize="20"
                    FontWeight="Bold"
-                   Text="Window 10" 
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
+                   Text="Window 10" />
         <ListView x:Name="AnimList"
                   Grid.Row="1"
-                  ItemClick="AnimList_ItemClick"
-                  IsItemClickEnabled="True">
+                  IsItemClickEnabled="True"
+                  ItemClick="AnimList_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:CustomAnim">
                     <TextBlock Text="{x:Bind Name}" />

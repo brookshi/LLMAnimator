@@ -62,20 +62,27 @@ namespace LLM
             return this;
         }
 
-        public void AddAnimationToStoryboard(Storyboard storyboard, DependencyObject target, Timeline anim, string property, Action ContinueWith)
+        protected Storyboard CreateStoryboard(Action continueWith)
+        {
+            var storyboard = new Storyboard();
+            storyboard.Completed += (s, e) =>
+            {
+                if (continueWith != null)
+                    continueWith();
+            };
+
+            storyboard.BeginTime = Delay;
+            storyboard.RepeatBehavior = RepeatBehavior;
+
+            return storyboard;
+        }
+
+        protected void AddAnimationToStoryboard(Storyboard storyboard, DependencyObject target, Timeline anim, string property)
         {
             storyboard.Children.Add(anim);
 
             Storyboard.SetTarget(anim, target);
             Storyboard.SetTargetProperty(anim, property);
-
-            storyboard.Completed += (s, e) =>
-            {
-                if (ContinueWith != null)
-                    ContinueWith();
-            };
-            storyboard.BeginTime = Delay;
-            storyboard.RepeatBehavior = RepeatBehavior;
         }
     }
 }

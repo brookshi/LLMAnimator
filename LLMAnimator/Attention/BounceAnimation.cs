@@ -32,13 +32,13 @@ namespace LLM.Attention
             Duration = TimeSpan.FromMilliseconds(800);
         }
 
-        public override void PlayOn(UIElement target, Action ContinueWith)
+        public override void PlayOn(UIElement target, Action continueWith)
         {
             var transform = AnimUtils.PrepareTransform(target, typeof(TranslateTransform));
 
-            Storyboard storyboard = new Storyboard();
+            var storyboard = CreateStoryboard(continueWith);
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "Y", ContinueWith);
+            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "Y");
 
             storyboard.Begin();
         }

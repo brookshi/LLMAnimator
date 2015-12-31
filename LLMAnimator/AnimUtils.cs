@@ -51,7 +51,7 @@ namespace LLM
                 return transform;
             }
 
-            transform = transformGroup.Children.Single(o => o.GetType() == targetTransformType);
+            transform = transformGroup.Children.SingleOrDefault(o => o.GetType() == targetTransformType);
 
             if (transform == null)
             {

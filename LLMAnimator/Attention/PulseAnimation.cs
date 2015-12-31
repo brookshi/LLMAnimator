@@ -32,17 +32,17 @@ namespace LLM.Attention
             Duration = TimeSpan.FromMilliseconds(500);
         }
 
-        public override void PlayOn(UIElement target, Action ContinueWith)
+        public override void PlayOn(UIElement target, Action continueWith)
         {
             var transform = AnimUtils.PrepareTransform(target, typeof(ScaleTransform));
             ((ScaleTransform)transform).CenterX = target.RenderSize.Width / 2;
             ((ScaleTransform)transform).CenterY = target.RenderSize.Height / 2;
 
-            Storyboard storyboard = new Storyboard();
+            var storyboard = CreateStoryboard(continueWith);
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "ScaleX", null);
+            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "ScaleX");
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "ScaleY", ContinueWith);
+            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "ScaleY");
 
             storyboard.Begin();
         }
