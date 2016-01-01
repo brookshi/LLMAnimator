@@ -29,7 +29,7 @@ namespace LLM.Attention
     {
         public PulseAnimation()
         {
-            Duration = TimeSpan.FromMilliseconds(500);
+            Duration = TimeSpan.FromMilliseconds(400);
         }
 
         public override void PlayOn(UIElement target, Action continueWith)

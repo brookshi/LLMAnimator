@@ -25,9 +25,9 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace LLM.Attention
 {
-    public class BounceAnimation : AnimationBase
+    public class ShakeAnimation : AnimationBase
     {
-        public BounceAnimation()
+        public ShakeAnimation()
         {
             Duration = TimeSpan.FromMilliseconds(800);
         }
@@ -38,38 +38,11 @@ namespace LLM.Attention
 
             var storyboard = CreateStoryboard(continueWith);
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "Y");
+            var anim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 10, -10, 10, -10, 6, -6, 2, -2, 0);
 
+            AddAnimationToStoryboard(storyboard, transform, anim, "X");
+            
             storyboard.Begin();
-        }
-
-        Timeline CreateAnimation()
-        {
-            DoubleAnimationUsingKeyFrames frames = new DoubleAnimationUsingKeyFrames();
-            var firstTimeSpan = TimeSpan.FromMilliseconds(Duration.TotalMilliseconds / 8);
-
-            frames.KeyFrames.Add(new EasingDoubleKeyFrame()
-            {
-                EasingFunction = new SineEase()
-                {
-                    EasingMode = EasingMode.EaseIn
-                },
-                KeyTime = KeyTime.FromTimeSpan(firstTimeSpan),
-                Value = -8,
-            });
-            frames.KeyFrames.Add(new EasingDoubleKeyFrame()
-            {
-                EasingFunction = new BounceEase()
-                {
-                    Bounces = 2,
-                    Bounciness = 1.3,
-                    EasingMode = EasingMode.EaseOut
-                },
-                KeyTime = KeyTime.FromTimeSpan(Duration),
-                Value = 0,
-            });
-
-            return frames;
         }
     }
 }

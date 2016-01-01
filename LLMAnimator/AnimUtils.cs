@@ -27,6 +27,30 @@ namespace LLM
 {
     public static class AnimUtils
     {
+        public static Timeline CreateAnimationWithValues(DependencyObject target, double duration, params double[] values)
+        {
+            if (values.Length == 0)
+                throw new ArgumentException("need one or more values");
+
+            var divideTime = duration / values.Length;
+            DoubleAnimationUsingKeyFrames frames = new DoubleAnimationUsingKeyFrames();
+
+            for(int i=0; i < values.Length; i++)
+            {
+                frames.KeyFrames.Add(new EasingDoubleKeyFrame()
+                {
+                    EasingFunction = new SineEase()
+                    {
+                        EasingMode = EasingMode.EaseIn
+                    },
+                    KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(divideTime * (i + 1))),
+                    Value = values[i],
+                });
+            }
+
+            return frames;
+        }
+
         public static Transform PrepareTransform(UIElement target, Type targetTransformType)
         {
             var renderTransform = target.RenderTransform;

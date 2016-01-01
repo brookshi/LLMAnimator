@@ -29,7 +29,7 @@ namespace LLM.Attention
     {
         public RubberBandAnimation()
         {
-            Duration = TimeSpan.FromMilliseconds(900);
+            Duration = TimeSpan.FromMilliseconds(800);
         }
 
         public override void PlayOn(UIElement target, Action continueWith)
@@ -49,7 +49,7 @@ namespace LLM.Attention
         Timeline CreateAnimation(double startValue)
         {
             DoubleAnimationUsingKeyFrames frames = new DoubleAnimationUsingKeyFrames();
-            var firstTimeSpan = TimeSpan.FromMilliseconds(Duration.Milliseconds / 9);
+            var firstTimeSpan = TimeSpan.FromMilliseconds(Duration.TotalMilliseconds / 8);
 
             frames.KeyFrames.Add(new EasingDoubleKeyFrame()
             {
@@ -68,7 +68,7 @@ namespace LLM.Attention
                     Springiness = 1,
                     EasingMode = EasingMode.EaseOut
                 },
-                KeyTime = KeyTime.FromTimeSpan(Duration - firstTimeSpan),
+                KeyTime = KeyTime.FromTimeSpan(Duration),
                 Value = 1,
             });
 

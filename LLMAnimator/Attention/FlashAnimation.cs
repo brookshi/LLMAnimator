@@ -29,7 +29,7 @@ namespace LLM.Attention
         public FlashAnimation()
         {
             RepeatBehavior = new RepeatBehavior(2);
-            Duration = TimeSpan.FromMilliseconds(800);
+            Duration = TimeSpan.FromMilliseconds(400);
         }
 
         public override void PlayOn(UIElement target, Action continueWith)
@@ -51,7 +51,7 @@ namespace LLM.Attention
                 {
                     EasingMode = EasingMode.EaseIn
                 },
-                KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(Duration.Milliseconds / 2)),
+                KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(Duration.TotalMilliseconds / 2)),
                 Value = 0,
             });
             frames.KeyFrames.Add(new EasingDoubleKeyFrame()
@@ -60,7 +60,7 @@ namespace LLM.Attention
                 {
                     EasingMode = EasingMode.EaseIn
                 },
-                KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(Duration.Milliseconds / 2)),
+                KeyTime = KeyTime.FromTimeSpan(Duration),
                 Value = 1,
             });
 

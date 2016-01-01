@@ -27,6 +27,8 @@ namespace LLM
                     return new PulseAnimation();
                 case AnimationType.RubberBand:
                     return new RubberBandAnimation();
+                case AnimationType.Shake:
+                    return new ShakeAnimation();
             }
 
             return null;

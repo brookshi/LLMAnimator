@@ -65,6 +65,14 @@ namespace Sample
                 }
             });
 
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = "Shake",
+                ClickAction = () => {
+                    Animator.Use(AnimationType.Shake).PlayOn(AnimText);
+                }
+            });
+
             AnimList.ItemsSource = CustomAnims;
         }
 
