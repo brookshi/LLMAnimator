@@ -73,5 +73,11 @@ namespace LLM
 
             throw new NotSupportedException();
         }
+
+        public static void SetCenterForScaleTransform(UIElement target, ScaleTransform transform)
+        {
+            transform.CenterX = target.RenderSize.Width / 2;
+            transform.CenterY = target.RenderSize.Height / 2;
+        }
     }
 }

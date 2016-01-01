@@ -35,8 +35,7 @@ namespace LLM.Attention
         public override void PlayOn(UIElement target, Action continueWith)
         {
             var transform = AnimUtils.PrepareTransform(target, typeof(ScaleTransform));
-            ((ScaleTransform)transform).CenterX = target.RenderSize.Width / 2;
-            ((ScaleTransform)transform).CenterY = target.RenderSize.Height / 2;
+            AnimUtils.SetCenterForScaleTransform(target, (ScaleTransform)transform);
 
             var storyboard = CreateStoryboard(continueWith);
 

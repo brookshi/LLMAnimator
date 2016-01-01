@@ -57,6 +57,14 @@ namespace Sample
                 }
             });
 
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = "RubberBand",
+                ClickAction = () => {
+                    Animator.Use(AnimationType.RubberBand).PlayOn(AnimText);
+                }
+            });
+
             AnimList.ItemsSource = CustomAnims;
         }
 

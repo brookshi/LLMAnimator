@@ -26,6 +26,7 @@ namespace LLM
     {
         Bounce,
         Flash,
-        Pulse
+        Pulse,
+        RubberBand
     }
 }

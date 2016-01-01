@@ -25,25 +25,28 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace LLM.Attention
 {
-    public class BounceAnimation : AnimationBase
+    public class RubberBandAnimation : AnimationBase
     {
-        public BounceAnimation()
+        public RubberBandAnimation()
         {
             Duration = TimeSpan.FromMilliseconds(900);
         }
 
         public override void PlayOn(UIElement target, Action continueWith)
         {
-            var transform = AnimUtils.PrepareTransform(target, typeof(TranslateTransform));
+            var transform = AnimUtils.PrepareTransform(target, typeof(ScaleTransform));
+            AnimUtils.SetCenterForScaleTransform(target, (ScaleTransform)transform);
 
             var storyboard = CreateStoryboard(continueWith);
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "Y");
+            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(1.25), "ScaleX");
+
+            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(0.75), "ScaleY");
 
             storyboard.Begin();
         }
 
-        Timeline CreateAnimation()
+        Timeline CreateAnimation(double startValue)
         {
             DoubleAnimationUsingKeyFrames frames = new DoubleAnimationUsingKeyFrames();
             var firstTimeSpan = TimeSpan.FromMilliseconds(Duration.Milliseconds / 9);
@@ -55,18 +58,18 @@ namespace LLM.Attention
                     EasingMode = EasingMode.EaseIn
                 },
                 KeyTime = KeyTime.FromTimeSpan(firstTimeSpan),
-                Value = -8,
+                Value = startValue,
             });
             frames.KeyFrames.Add(new EasingDoubleKeyFrame()
             {
-                EasingFunction = new BounceEase()
+                EasingFunction = new ElasticEase()
                 {
-                    Bounces = 2,
-                    Bounciness = 1.3,
+                    Oscillations = 2,
+                    Springiness = 1,
                     EasingMode = EasingMode.EaseOut
                 },
                 KeyTime = KeyTime.FromTimeSpan(Duration - firstTimeSpan),
-                Value = 0,
+                Value = 1,
             });
 
             return frames;

@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="AnimationBase.cs" />
     <Compile Include="AnimUtils.cs" />
+    <Compile Include="Attention\RubberBandAnimation.cs" />
     <Compile Include="Attention\PulseAnimation.cs" />
     <Compile Include="Attention\BounceAnimation.cs" />
     <Compile Include="Animator.cs" />
