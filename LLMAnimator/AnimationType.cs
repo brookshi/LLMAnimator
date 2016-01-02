@@ -33,5 +33,6 @@ namespace LLM
         Swing,
         Tada,
         Wave,
+        Wobble
     }
 }

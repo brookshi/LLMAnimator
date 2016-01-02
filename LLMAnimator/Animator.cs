@@ -37,6 +37,8 @@ namespace LLM
                     return new TadaAnimation();
                 case AnimationType.Wave:
                     return new WaveAnimation();
+                case AnimationType.Wobble:
+                    return new WobbleAnimation();
             }
 
             return null;
