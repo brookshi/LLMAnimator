@@ -29,6 +29,8 @@ namespace LLM
                     return new RubberBandAnimation();
                 case AnimationType.Shake:
                     return new ShakeAnimation();
+                case AnimationType.StandUp:
+                    return new StandUpAnimation();
             }
 
             return null;

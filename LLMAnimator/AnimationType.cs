@@ -29,5 +29,6 @@ namespace LLM
         Pulse,
         RubberBand,
         Shake,
+        StandUp,
     }
 }

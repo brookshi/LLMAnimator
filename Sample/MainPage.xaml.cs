@@ -73,6 +73,14 @@ namespace Sample
                 }
             });
 
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = "StandUp",
+                ClickAction = () => {
+                    Animator.Use(AnimationType.StandUp).PlayOn(AnimText);
+                }
+            });
+
             AnimList.ItemsSource = CustomAnims;
         }
 

@@ -54,14 +54,15 @@ namespace LLM
         public static Transform PrepareTransform(UIElement target, Type targetTransformType)
         {
             var renderTransform = target.RenderTransform;
-            if (renderTransform.GetType() == targetTransformType)
-                return renderTransform;
 
             if (renderTransform == null)
             {
                 target.RenderTransform = BuildTransform(targetTransformType);
                 return target.RenderTransform;
             }
+
+            if (renderTransform.GetType() == targetTransformType)
+                return renderTransform;
 
             var transformGroup = renderTransform as TransformGroup;
             var transform = BuildTransform(targetTransformType);
@@ -86,6 +87,17 @@ namespace LLM
             return transform;
         }
 
+        public static Projection PrepareProjection(UIElement target, Type projectionType)
+        {
+            if(target.Projection != null && target.Projection.GetType() == projectionType)
+            {
+                return target.Projection;
+            }
+
+            target.Projection = BuildProjection(projectionType);
+            return target.Projection;
+        }
+
         public static Transform BuildTransform(Type targetTransformType)
         {
             if (targetTransformType == typeof(TranslateTransform))
@@ -94,14 +106,43 @@ namespace LLM
                 return new RotateTransform();
             if (targetTransformType == typeof(ScaleTransform))
                 return new ScaleTransform();
+            if (targetTransformType == typeof(CompositeTransform))
+                return new CompositeTransform();
+            if (targetTransformType == typeof(SkewTransform))
+                return new SkewTransform();
+
+            throw new NotSupportedException();
+        }
+
+        public static Projection BuildProjection(Type targetProjectionType)
+        {
+            if (targetProjectionType == typeof(PlaneProjection))
+                return new PlaneProjection();
+            if (targetProjectionType == typeof(Matrix3DProjection))
+                return new Matrix3DProjection();
 
             throw new NotSupportedException();
         }
 
         public static void SetCenterForScaleTransform(UIElement target, ScaleTransform transform)
         {
-            transform.CenterX = target.RenderSize.Width / 2;
-            transform.CenterY = target.RenderSize.Height / 2;
+            transform.CenterX = GetCenterX(target);
+            transform.CenterY = GetCenterY(target);
+        }
+
+        public static double GetCenterX(UIElement target)
+        {
+            return target.RenderSize.Width / 2;
+        }
+
+        public static double GetCenterY(UIElement target)
+        {
+            return target.RenderSize.Height / 2;
+        }
+
+        public static double GetBottomY(UIElement target)
+        {
+            return target.RenderSize.Height;
         }
     }
 }
