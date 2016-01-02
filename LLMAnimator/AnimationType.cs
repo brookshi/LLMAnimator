@@ -30,5 +30,7 @@ namespace LLM
         RubberBand,
         Shake,
         StandUp,
+        Swing,
+        Tada,
     }
 }

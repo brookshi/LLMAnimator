@@ -31,6 +31,10 @@ namespace LLM
                     return new ShakeAnimation();
                 case AnimationType.StandUp:
                     return new StandUpAnimation();
+                case AnimationType.Swing:
+                    return new SwingAnimation();
+                case AnimationType.Tada:
+                    return new TadaAnimation();
             }
 
             return null;

@@ -115,6 +115,8 @@
   <ItemGroup>
     <Compile Include="AnimationBase.cs" />
     <Compile Include="AnimUtils.cs" />
+    <Compile Include="Attention\TadaAnimation.cs" />
+    <Compile Include="Attention\SwingAnimation.cs" />
     <Compile Include="Attention\StandUpAnimation.cs" />
     <Compile Include="Attention\ShakeAnimation.cs" />
     <Compile Include="Attention\RubberBandAnimation.cs" />

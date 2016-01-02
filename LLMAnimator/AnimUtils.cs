@@ -41,7 +41,7 @@ namespace LLM
                 {
                     EasingFunction = new SineEase()
                     {
-                        EasingMode = EasingMode.EaseIn
+                        EasingMode = EasingMode.EaseIn,
                     },
                     KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(divideTime * (i + 1))),
                     Value = values[i],

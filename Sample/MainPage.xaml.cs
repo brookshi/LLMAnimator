@@ -81,7 +81,22 @@ namespace Sample
                 }
             });
 
+            AddAnim("Swing", AnimationType.Swing);
+
+            AddAnim("Tada", AnimationType.Tada);
+
             AnimList.ItemsSource = CustomAnims;
+        }
+
+        void AddAnim(string name, AnimationType type)
+        {
+            CustomAnims.Add(new CustomAnim()
+            {
+                Name = name,
+                ClickAction = () => {
+                    Animator.Use(type).PlayOn(AnimText);
+                }
+            });
         }
 
         private void AnimList_ItemClick(object sender, ItemClickEventArgs e)
