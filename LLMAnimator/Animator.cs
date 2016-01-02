@@ -35,6 +35,8 @@ namespace LLM
                     return new SwingAnimation();
                 case AnimationType.Tada:
                     return new TadaAnimation();
+                case AnimationType.Wave:
+                    return new WaveAnimation();
             }
 
             return null;

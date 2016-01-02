@@ -85,6 +85,8 @@ namespace Sample
 
             AddAnim("Tada", AnimationType.Tada);
 
+            AddAnim("Wave", AnimationType.Wave);
+
             AnimList.ItemsSource = CustomAnims;
         }
 
