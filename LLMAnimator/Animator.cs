@@ -41,6 +41,14 @@ namespace LLM
                     return new WobbleAnimation();
                 case AnimationType.BounceIn:
                     return new BounceInAnimation();
+                case AnimationType.BounceInDown:
+                    return new BounceInDownAnimation();
+                case AnimationType.BounceInUp:
+                    return new BounceInUpAnimation();
+                case AnimationType.BounceInLeft:
+                    return new BounceInLeftAnimation();
+                case AnimationType.BounceInRight:
+                    return new BounceInRightAnimation();
             }
 
             return null;

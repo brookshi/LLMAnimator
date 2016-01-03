@@ -91,6 +91,14 @@ namespace Sample
 
             AddAnim("BounceIn", AnimationType.BounceIn);
 
+            AddAnim("BounceInDown", AnimationType.BounceInDown);
+
+            AddAnim("BounceInUp", AnimationType.BounceInUp);
+
+            AddAnim("BounceInLeft", AnimationType.BounceInLeft);
+
+            AddAnim("BounceInRight", AnimationType.BounceInRight);
+
             AnimList.ItemsSource = CustomAnims;
         }
 

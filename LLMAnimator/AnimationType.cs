@@ -36,5 +36,9 @@ namespace LLM
         Wobble,
 
         BounceIn,
+        BounceInDown,
+        BounceInUp,
+        BounceInLeft,
+        BounceInRight,
     }
 }
