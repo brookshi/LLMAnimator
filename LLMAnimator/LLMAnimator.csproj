@@ -126,11 +126,13 @@
     <Compile Include="Attention\BounceAnimation.cs" />
     <Compile Include="Animator.cs" />
     <Compile Include="Attention\FlashAnimation.cs" />
+    <Compile Include="BouncingEntrances\BounceInAnimation.cs" />
     <Compile Include="IAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AnimationType.cs" />
     <Content Include="Properties\LLMAnimator.rd.xml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

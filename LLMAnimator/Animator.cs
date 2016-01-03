@@ -39,6 +39,8 @@ namespace LLM
                     return new WaveAnimation();
                 case AnimationType.Wobble:
                     return new WobbleAnimation();
+                case AnimationType.BounceIn:
+                    return new BounceInAnimation();
             }
 
             return null;

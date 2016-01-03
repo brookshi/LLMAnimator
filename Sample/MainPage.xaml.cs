@@ -89,6 +89,8 @@ namespace Sample
 
             AddAnim("Wobble", AnimationType.Wobble);
 
+            AddAnim("BounceIn", AnimationType.BounceIn);
+
             AnimList.ItemsSource = CustomAnims;
         }
 
