@@ -60,7 +60,14 @@ namespace Sample
 
         private void AnimList_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Reset();
             (e.ClickedItem as CustomAnim).ClickAction();
+        }
+
+        void Reset()
+        {
+            AnimText.Opacity = 1;
+            AnimText.RenderTransform = null;
         }
     }
 

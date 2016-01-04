@@ -131,7 +131,12 @@
     <Compile Include="BouncingEntrances\BounceInUpAnimation.cs" />
     <Compile Include="BouncingEntrances\BounceInDownAnimation.cs" />
     <Compile Include="BouncingEntrances\BounceInAnimation.cs" />
+    <Compile Include="fading_entrances\FadeOutAnimation.cs" />
+    <Compile Include="fading_entrances\FadeOutDownAnimation.cs" />
     <Compile Include="fading_entrances\FadeInDownAnimation.cs" />
+    <Compile Include="fading_entrances\FadeOutLeftAnimation.cs" />
+    <Compile Include="fading_entrances\FadeOutRightAnimation.cs" />
+    <Compile Include="fading_entrances\FadeOutUpAnimation.cs" />
     <Compile Include="fading_entrances\FadeInUpAnimation.cs" />
     <Compile Include="fading_entrances\FadeInRightAnimation.cs" />
     <Compile Include="fading_entrances\FadeInLeftAnimation.cs" />

@@ -19,38 +19,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace LLM
 {
-    public enum AnimationType
+    public class FadeOutAnimation : AnimationBase
     {
-        Bounce,
-        Flash,
-        Pulse,
-        RubberBand,
-        Shake,
-        StandUp,
-        Swing,
-        Tada,
-        Wave,
-        Wobble,
+        public FadeOutAnimation()
+        {
+            Duration = TimeSpan.FromMilliseconds(500);
+        }
 
-        BounceIn,
-        BounceInDown,
-        BounceInUp,
-        BounceInLeft,
-        BounceInRight,
+        public override void PlayOn(UIElement target, Action continueWith)
+        {
+            var storyboard = CreateStoryboard(continueWith);
 
-        FadeIn,
-        FadeInDown,
-        FadeInUp,
-        FadeInLeft,
-        FadeInRight,
+            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
+            AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
 
-        FadeOut,
-        FadeOutDown,
-        FadeOutUp,
-        FadeOutLeft,
-        FadeOutRight,
+            storyboard.Begin();
+        }
     }
 }
