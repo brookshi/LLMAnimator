@@ -68,6 +68,7 @@ namespace Sample
         {
             AnimText.Opacity = 1;
             AnimText.RenderTransform = null;
+            AnimText.Projection = null;
         }
     }
 

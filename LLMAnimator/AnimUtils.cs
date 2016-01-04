@@ -29,19 +29,24 @@ namespace LLM
     {
         public static Timeline CreateAnimationWithValues(double duration, params double[] values)
         {
+            return CreateEasingAnimationWithValues(duration, EasingMode.EaseIn, values);
+        }
+
+        public static Timeline CreateEasingAnimationWithValues(double duration, EasingMode easingMode, params double[] values)
+        {
             if (values.Length == 0)
                 throw new ArgumentException("need one or more values");
 
             var divideTime = duration / values.Length;
             DoubleAnimationUsingKeyFrames frames = new DoubleAnimationUsingKeyFrames();
 
-            for(int i=0; i < values.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
                 frames.KeyFrames.Add(new EasingDoubleKeyFrame()
                 {
                     EasingFunction = new SineEase()
                     {
-                        EasingMode = EasingMode.EaseIn,
+                        EasingMode = easingMode,
                     },
                     KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(divideTime * (i + 1))),
                     Value = values[i],

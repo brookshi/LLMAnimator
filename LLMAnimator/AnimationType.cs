@@ -52,5 +52,13 @@ namespace LLM
         FadeOutUp,
         FadeOutLeft,
         FadeOutRight,
+
+        FlipInX,
+        FlipInY,
+
+        FlipOutX,
+        FlipOutY,
+
+
     }
 }

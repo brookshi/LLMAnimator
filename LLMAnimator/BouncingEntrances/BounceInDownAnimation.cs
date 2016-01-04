@@ -23,7 +23,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace LLM.Attention
+namespace LLM.Animation
 {
     public class BounceInDownAnimation : AnimationBase
     {

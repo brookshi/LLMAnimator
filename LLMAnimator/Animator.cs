@@ -1,5 +1,4 @@
-﻿using LLM.Attention;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +9,8 @@ namespace LLM
 {
     public class Animator
     {
+        static Dictionary<AnimationType, IAnimation> _animPool = new Dictionary<AnimationType, IAnimation>();
+
         public static IAnimation Use(AnimationType animType)
         {
             return CreateAnimationbyType(animType);
@@ -17,59 +18,67 @@ namespace LLM
 
         private static IAnimation CreateAnimationbyType(AnimationType animType)
         {
-            switch(animType)
+            if(!_animPool.ContainsKey(animType))
             {
-                case AnimationType.Bounce:
-                    return new BounceAnimation();
-                case AnimationType.Flash:
-                    return new FlashAnimation();
-                case AnimationType.Pulse:
-                    return new PulseAnimation();
-                case AnimationType.RubberBand:
-                    return new RubberBandAnimation();
-                case AnimationType.Shake:
-                    return new ShakeAnimation();
-                case AnimationType.StandUp:
-                    return new StandUpAnimation();
-                case AnimationType.Swing:
-                    return new SwingAnimation();
-                case AnimationType.Tada:
-                    return new TadaAnimation();
-                case AnimationType.Wave:
-                    return new WaveAnimation();
-                case AnimationType.Wobble:
-                    return new WobbleAnimation();
-                case AnimationType.BounceIn:
-                    return new BounceInAnimation();
-                case AnimationType.BounceInDown:
-                    return new BounceInDownAnimation();
-                case AnimationType.BounceInUp:
-                    return new BounceInUpAnimation();
-                case AnimationType.BounceInLeft:
-                    return new BounceInLeftAnimation();
-                case AnimationType.BounceInRight:
-                    return new BounceInRightAnimation();
-                case AnimationType.FadeIn:
-                    return new FadeInAnimation();
-                case AnimationType.FadeInDown:
-                    return new FadeInDownAnimation();
-                case AnimationType.FadeInUp:
-                    return new FadeInUpAnimation();
-                case AnimationType.FadeInLeft:
-                    return new FadeInLeftAnimation();
-                case AnimationType.FadeInRight:
-                    return new FadeInRightAnimation();
-                case AnimationType.FadeOut:
-                    return new FadeOutAnimation();
-                case AnimationType.FadeOutDown:
-                    return new FadeOutDownAnimation();
-                case AnimationType.FadeOutUp:
-                    return new FadeOutUpAnimation();
-                case AnimationType.FadeOutLeft:
-                    return new FadeOutLeftAnimation();
-                case AnimationType.FadeOutRight:
-                    return new FadeOutRightAnimation();
+                var animName = Enum.GetName(typeof(AnimationType), animType);
+                var animation = (IAnimation)Activator.CreateInstance(Type.GetType(string.Format("LLM.Animation.{0}Animation,LLMAnimator", animName)));
+                _animPool[animType] = animation;
             }
+
+            return _animPool[animType];
+            //switch (animType)
+            //{
+            //    case AnimationType.Bounce:
+            //        return new BounceAnimation();
+            //    case AnimationType.Flash:
+            //        return new FlashAnimation();
+            //    case AnimationType.Pulse:
+            //        return new PulseAnimation();
+            //    case AnimationType.RubberBand:
+            //        return new RubberBandAnimation();
+            //    case AnimationType.Shake:
+            //        return new ShakeAnimation();
+            //    case AnimationType.StandUp:
+            //        return new StandUpAnimation();
+            //    case AnimationType.Swing:
+            //        return new SwingAnimation();
+            //    case AnimationType.Tada:
+            //        return new TadaAnimation();
+            //    case AnimationType.Wave:
+            //        return new WaveAnimation();
+            //    case AnimationType.Wobble:
+            //        return new WobbleAnimation();
+            //    case AnimationType.BounceIn:
+            //        return new BounceInAnimation();
+            //    case AnimationType.BounceInDown:
+            //        return new BounceInDownAnimation();
+            //    case AnimationType.BounceInUp:
+            //        return new BounceInUpAnimation();
+            //    case AnimationType.BounceInLeft:
+            //        return new BounceInLeftAnimation();
+            //    case AnimationType.BounceInRight:
+            //        return new BounceInRightAnimation();
+            //    case AnimationType.FadeIn:
+            //        return new FadeInAnimation();
+            //    case AnimationType.FadeInDown:
+            //        return new FadeInDownAnimation();
+            //    case AnimationType.FadeInUp:
+            //        return new FadeInUpAnimation();
+            //    case AnimationType.FadeInLeft:
+            //        return new FadeInLeftAnimation();
+            //    case AnimationType.FadeInRight:
+            //        return new FadeInRightAnimation();
+            //    case AnimationType.FadeOut:
+            //        return new FadeOutAnimation();
+            //    case AnimationType.FadeOutDown:
+            //        return new FadeOutDownAnimation();
+            //    case AnimationType.FadeOutUp:
+            //        return new FadeOutUpAnimation();
+            //    case AnimationType.FadeOutLeft:
+            //        return new FadeOutLeftAnimation();
+            //    case AnimationType.FadeOutRight:
+            //        return new FadeOutRightAnimation();
+            //}
 
             return null;
         }

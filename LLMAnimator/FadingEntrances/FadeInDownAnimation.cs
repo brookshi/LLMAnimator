@@ -23,11 +23,11 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace LLM
+namespace LLM.Animation
 {
-    public class FadeInUpAnimation : AnimationBase
+    public class FadeInDownAnimation : AnimationBase
     {
-        public FadeInUpAnimation()
+        public FadeInDownAnimation()
         {
             Duration = TimeSpan.FromMilliseconds(500);
         }
@@ -36,7 +36,7 @@ namespace LLM
         {
             var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
             target.Opacity = 0;
-            transform.TranslateY = target.RenderSize.Height;
+            transform.TranslateY = -target.RenderSize.Height;
             var storyboard = CreateStoryboard(continueWith);
 
             var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1);
