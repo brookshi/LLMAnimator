@@ -148,6 +148,11 @@
     <Compile Include="IAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AnimationType.cs" />
+    <Compile Include="RotatingEntrances\RotateInUpLeftAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateInUpRightAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateInDownRightAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateInDownLeftAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateInAnimation.cs" />
     <Content Include="Properties\LLMAnimator.rd.xml" />
   </ItemGroup>
   <ItemGroup />

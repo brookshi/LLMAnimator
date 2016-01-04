@@ -59,6 +59,10 @@ namespace LLM
         FlipOutX,
         FlipOutY,
 
-
+        RotateIn,
+        RotateInDownLeft,
+        RotateInDownRight,
+        RotateInUpLeft,
+        RotateInUpRight,
     }
 }
