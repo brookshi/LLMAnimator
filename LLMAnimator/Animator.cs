@@ -49,6 +49,16 @@ namespace LLM
                     return new BounceInLeftAnimation();
                 case AnimationType.BounceInRight:
                     return new BounceInRightAnimation();
+                case AnimationType.FadeIn:
+                    return new FadeInAnimation();
+                case AnimationType.FadeInDown:
+                    return new FadeInDownAnimation();
+                case AnimationType.FadeInUp:
+                    return new FadeInUpAnimation();
+                case AnimationType.FadeInLeft:
+                    return new FadeInLeftAnimation();
+                case AnimationType.FadeInRight:
+                    return new FadeInRightAnimation();
             }
 
             return null;

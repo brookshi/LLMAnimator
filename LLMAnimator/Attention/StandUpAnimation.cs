@@ -40,7 +40,7 @@ namespace LLM.Attention
 
             var storyboard = CreateStoryboard(continueWith);
 
-            var anim = AnimUtils.CreateAnimationWithValues(projection, Duration.TotalMilliseconds, 30, -15, 15, 0);
+            var anim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 30, -15, 15, 0);
             AddAnimationToStoryboard(storyboard, projection, anim, "RotationX ");
 
             storyboard.Begin();

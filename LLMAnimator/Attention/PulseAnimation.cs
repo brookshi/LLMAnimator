@@ -29,6 +29,7 @@ namespace LLM.Attention
     {
         public PulseAnimation()
         {
+            RepeatBehavior = new RepeatBehavior(2);
             Duration = TimeSpan.FromMilliseconds(400);
         }
 

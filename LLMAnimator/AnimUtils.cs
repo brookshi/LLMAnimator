@@ -27,7 +27,7 @@ namespace LLM
 {
     public static class AnimUtils
     {
-        public static Timeline CreateAnimationWithValues(DependencyObject target, double duration, params double[] values)
+        public static Timeline CreateAnimationWithValues(double duration, params double[] values)
         {
             if (values.Length == 0)
                 throw new ArgumentException("need one or more values");

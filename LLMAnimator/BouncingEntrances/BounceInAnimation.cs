@@ -40,7 +40,7 @@ namespace LLM.Attention
             target.Opacity = 0;
             var storyboard = CreateStoryboard(continueWith);
 
-            var opacityAnim = AnimUtils.CreateAnimationWithValues(target, Duration.TotalMilliseconds/1.5, 1);
+            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds/1.5, 1);
             AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
             AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "ScaleX");
             AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "ScaleY");

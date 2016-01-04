@@ -35,12 +35,11 @@ namespace LLM.Attention
         public override void PlayOn(UIElement target, Action continueWith)
         {
             var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
-            transform.CenterX = AnimUtils.GetCenterX(target);
-            transform.CenterY = AnimUtils.GetCenterY(target);
+            transform.TranslateY = -target.RenderSize.Height;
             target.Opacity = 0;
             var storyboard = CreateStoryboard(continueWith);
 
-            var opacityAnim = AnimUtils.CreateAnimationWithValues(target, Duration.TotalMilliseconds/2, 1);
+            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds/2, 1);
             AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
             AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "TranslateY");
 
@@ -52,7 +51,6 @@ namespace LLM.Attention
             return new DoubleAnimation()
             {
                 Duration = new Duration(Duration),
-                From = -30,
                 To = 0,
                 EasingFunction = new BounceEase()
                 {

@@ -40,13 +40,13 @@ namespace LLM.Attention
 
             var storyboard = CreateStoryboard(continueWith);
 
-            var scaleXAnim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
+            var scaleXAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
             AddAnimationToStoryboard(storyboard, transform, scaleXAnim, "ScaleX");
 
-            var scaleYAnim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
+            var scaleYAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
             AddAnimationToStoryboard(storyboard, transform, scaleYAnim, "ScaleY");
 
-            var rotateAnim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
+            var rotateAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
             AddAnimationToStoryboard(storyboard, transform, rotateAnim, "Rotation");
 
             storyboard.Begin();

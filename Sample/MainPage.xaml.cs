@@ -33,73 +33,18 @@ namespace Sample
 
         private void InitAnimList()
         {
-            CustomAnims.Add(new CustomAnim()
-            {
-                Name = "Bounce",
-                ClickAction = ()=> {
-                    Animator.Use(AnimationType.Bounce).PlayOn(AnimText);
-                }
-            });
-
-            CustomAnims.Add(new CustomAnim()
-            {
-                Name = "Flash",
-                ClickAction = () => {
-                    Animator.Use(AnimationType.Flash).PlayOn(AnimText);
-                }
-            });
-
-            CustomAnims.Add(new CustomAnim()
-            {
-                Name = "Pulse",
-                ClickAction = () => {
-                    Animator.Use(AnimationType.Pulse).SetRepeatBehavior(new Windows.UI.Xaml.Media.Animation.RepeatBehavior(2)).PlayOn(AnimText);
-                }
-            });
-
-            CustomAnims.Add(new CustomAnim()
-            {
-                Name = "RubberBand",
-                ClickAction = () => {
-                    Animator.Use(AnimationType.RubberBand).PlayOn(AnimText);
-                }
-            });
-
-            CustomAnims.Add(new CustomAnim()
-            {
-                Name = "Shake",
-                ClickAction = () => {
-                    Animator.Use(AnimationType.Shake).PlayOn(AnimText);
-                }
-            });
-
-            CustomAnims.Add(new CustomAnim()
-            {
-                Name = "StandUp",
-                ClickAction = () => {
-                    Animator.Use(AnimationType.StandUp).PlayOn(AnimText);
-                }
-            });
-
-            AddAnim("Swing", AnimationType.Swing);
-
-            AddAnim("Tada", AnimationType.Tada);
-
-            AddAnim("Wave", AnimationType.Wave);
-
-            AddAnim("Wobble", AnimationType.Wobble);
-
-            AddAnim("BounceIn", AnimationType.BounceIn);
-
-            AddAnim("BounceInDown", AnimationType.BounceInDown);
-
-            AddAnim("BounceInUp", AnimationType.BounceInUp);
-
-            AddAnim("BounceInLeft", AnimationType.BounceInLeft);
-
-            AddAnim("BounceInRight", AnimationType.BounceInRight);
+            InitAnims();
 
             AnimList.ItemsSource = CustomAnims;
+            
+        }
+
+        void InitAnims()
+        {
+            foreach(var animType in Enum.GetValues(typeof(AnimationType)))
+            {
+                AddAnim(Enum.GetName(typeof(AnimationType), animType), (AnimationType)animType);
+            }
         }
 
         void AddAnim(string name, AnimationType type)

@@ -40,7 +40,7 @@ namespace LLM.Attention
 
             var storyboard = CreateStoryboard(continueWith);
 
-            var anim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 12, -12, 3, -3, 0);
+            var anim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 12, -12, 3, -3, 0);
             AddAnimationToStoryboard(storyboard, transform, anim, "Angle");
 
             storyboard.Begin();

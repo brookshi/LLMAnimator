@@ -40,5 +40,11 @@ namespace LLM
         BounceInUp,
         BounceInLeft,
         BounceInRight,
+
+        FadeIn,
+        FadeInDown,
+        FadeInUp,
+        FadeInLeft,
+        FadeInRight
     }
 }

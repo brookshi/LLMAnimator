@@ -23,25 +23,27 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace LLM.Attention
+namespace LLM
 {
-    public class ShakeAnimation : AnimationBase
+    public class FadeInLeftAnimation : AnimationBase
     {
-        public ShakeAnimation()
+        public FadeInLeftAnimation()
         {
-            Duration = TimeSpan.FromMilliseconds(800);
+            Duration = TimeSpan.FromMilliseconds(500);
         }
 
         public override void PlayOn(UIElement target, Action continueWith)
         {
-            var transform = AnimUtils.PrepareTransform(target, typeof(TranslateTransform));
-
+            var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
+            target.Opacity = 0;
+            transform.TranslateX = -target.RenderSize.Width / 2;
             var storyboard = CreateStoryboard(continueWith);
 
-            var anim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 10, -10, 10, -10, 6, -6, 2, -2, 0);
+            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1);
+            var translateAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
+            AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
+            AddAnimationToStoryboard(storyboard, transform, translateAnim, "TranslateX");
 
-            AddAnimationToStoryboard(storyboard, transform, anim, "X");
-            
             storyboard.Begin();
         }
     }

@@ -41,10 +41,10 @@ namespace LLM.Attention
             var storyboard = CreateStoryboard(continueWith);
             float WidthPerUnit = (float)(target.DesiredSize.Width / 100.0);
 
-            var translationAnim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 0, -25 * WidthPerUnit, 20 * WidthPerUnit, -15 * WidthPerUnit, 10 * WidthPerUnit, -5 * WidthPerUnit, 0, 0);
+            var translationAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -25 * WidthPerUnit, 20 * WidthPerUnit, -15 * WidthPerUnit, 10 * WidthPerUnit, -5 * WidthPerUnit, 0, 0);
             AddAnimationToStoryboard(storyboard, transform, translationAnim, "TranslateX");
 
-            var rotateAnim = AnimUtils.CreateAnimationWithValues(transform, Duration.TotalMilliseconds, 0, -5, 3, -3, 2, -1, 0);
+            var rotateAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -5, 3, -3, 2, -1, 0);
             AddAnimationToStoryboard(storyboard, transform, rotateAnim, "Rotation");
 
             storyboard.Begin();
