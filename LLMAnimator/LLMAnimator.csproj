@@ -148,7 +148,12 @@
     <Compile Include="IAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AnimationType.cs" />
+    <Compile Include="RotatingEntrances\RotateOutAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateOutDownLeftAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateOutDownRightAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateOutUpLeftAnimation.cs" />
     <Compile Include="RotatingEntrances\RotateInUpLeftAnimation.cs" />
+    <Compile Include="RotatingEntrances\RotateOutUpRightAnimation.cs" />
     <Compile Include="RotatingEntrances\RotateInUpRightAnimation.cs" />
     <Compile Include="RotatingEntrances\RotateInDownRightAnimation.cs" />
     <Compile Include="RotatingEntrances\RotateInDownLeftAnimation.cs" />

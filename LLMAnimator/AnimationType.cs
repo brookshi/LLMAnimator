@@ -64,5 +64,11 @@ namespace LLM
         RotateInDownRight,
         RotateInUpLeft,
         RotateInUpRight,
+
+        RotateOut,
+        RotateOutDownLeft,
+        RotateOutDownRight,
+        RotateOutUpLeft,
+        RotateOutUpRight,
     }
 }
