@@ -70,5 +70,15 @@ namespace LLM
         RotateOutDownRight,
         RotateOutUpLeft,
         RotateOutUpRight,
+
+        SlideInDown,
+        SlideInUp,
+        SlideInLeft,
+        SlideInRight,
+
+        SlideOutDown,
+        SlideOutUp,
+        SlideOutLeft,
+        SlideOutRight,
     }
 }

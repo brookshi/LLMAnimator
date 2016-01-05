@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
@@ -148,6 +149,15 @@ namespace LLM
         public static double GetBottomY(UIElement target)
         {
             return target.RenderSize.Height;
+        }
+
+        public static Point GetPointInParent(UIElement target)
+        {
+            var parent = VisualTreeHelper.GetParent(target) as UIElement;
+            if (parent == null)
+                return new Point(0, 0);
+
+            return target.TransformToVisual(parent).TransformPoint(new Point(0, 0));
         }
     }
 }

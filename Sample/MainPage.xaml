@@ -11,13 +11,15 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="AnimText"
-                   Margin="50, 0, 0, 0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="20"
-                   FontWeight="Bold"
-                   Text="Window 10" />
+        <Grid Background="LightGray">
+            <TextBlock x:Name="AnimText"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Canvas.ZIndex="-100"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Text="Window 10" />
+        </Grid>
         <ListView x:Name="AnimList"
                   Grid.Row="1"
                   IsItemClickEnabled="True"
