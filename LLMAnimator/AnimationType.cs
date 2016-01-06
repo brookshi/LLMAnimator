@@ -80,5 +80,17 @@ namespace LLM
         SlideOutUp,
         SlideOutLeft,
         SlideOutRight,
+
+        ZoomIn,
+        ZoomInDown,
+        ZoomInUp,
+        ZoomInLeft,
+        ZoomInRight,
+
+        ZoomOut,
+        ZoomOutDown,
+        ZoomOutUp,
+        ZoomOutLeft,
+        ZoomOutRight,
     }
 }

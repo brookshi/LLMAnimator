@@ -57,6 +57,20 @@ namespace LLM
             return frames;
         }
 
+        public static Timeline CreateDoubleAnimation(double duration, double from, double to, EasingMode easingMode)
+        {
+            return new DoubleAnimation()
+            {
+                Duration = new Duration(TimeSpan.FromMilliseconds(duration)),
+                From = from,
+                To = to,
+                EasingFunction = new SineEase()
+                {
+                    EasingMode = easingMode,
+                },
+            };
+        }
+
         public static Transform PrepareTransform(UIElement target, Type targetTransformType)
         {
             var renderTransform = target.RenderTransform;
@@ -158,6 +172,15 @@ namespace LLM
                 return new Point(0, 0);
 
             return target.TransformToVisual(parent).TransformPoint(new Point(0, 0));
+        }
+
+        public static Size GetParentSize(UIElement target)
+        {
+            var parent = VisualTreeHelper.GetParent(target) as UIElement;
+            if (parent == null)
+                return new Size(0, 0);
+
+            return parent.RenderSize;
         }
     }
 }

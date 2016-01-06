@@ -166,6 +166,16 @@
     <Compile Include="Slide\SlideOutUpAnimation.cs" />
     <Compile Include="Slide\SlideInUpAnimation.cs" />
     <Compile Include="Slide\SlideInDownAnimation.cs" />
+    <Compile Include="Zoom\ZoomOutDownAnimation.cs" />
+    <Compile Include="Zoom\ZoomOutLeftAnimation.cs" />
+    <Compile Include="Zoom\ZoomOutRightAnimation.cs" />
+    <Compile Include="Zoom\ZoomOutUpAnimation.cs" />
+    <Compile Include="Zoom\ZoomOutAnimation.cs" />
+    <Compile Include="Zoom\ZoomInRightAnimation.cs" />
+    <Compile Include="Zoom\ZoomInLeftAnimation.cs" />
+    <Compile Include="Zoom\ZoomInUpAnimation.cs" />
+    <Compile Include="Zoom\ZoomInDownAnimation.cs" />
+    <Compile Include="Zoom\ZoomInAnimation.cs" />
     <Content Include="Properties\LLMAnimator.rd.xml" />
   </ItemGroup>
   <ItemGroup />
