@@ -96,5 +96,6 @@ namespace LLM
         Hinge,
         RollIn,
         RollOut,
+        DropOut,
     }
 }
