@@ -144,12 +144,6 @@ namespace LLM
             throw new NotSupportedException();
         }
 
-        public static void SetCenterForScaleTransform(UIElement target, ScaleTransform transform)
-        {
-            transform.CenterX = GetCenterX(target);
-            transform.CenterY = GetCenterY(target);
-        }
-
         public static void SetCenterForCompositeTransform(UIElement target, CompositeTransform transform)
         {
             transform.CenterX = GetCenterX(target);
