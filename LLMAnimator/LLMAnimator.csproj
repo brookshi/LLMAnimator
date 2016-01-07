@@ -114,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimationBase.cs" />
+    <Compile Include="Specials\RollOutAnimation.cs" />
+    <Compile Include="Specials\RollInAnimation.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Attention\WobbleAnimation.cs" />
     <Compile Include="Attention\WaveAnimation.cs" />

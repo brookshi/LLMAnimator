@@ -94,5 +94,7 @@ namespace LLM
         ZoomOutRight,
 
         Hinge,
+        RollIn,
+        RollOut,
     }
 }
