@@ -115,8 +115,10 @@
   <ItemGroup>
     <Compile Include="AnimationBase.cs" />
     <Compile Include="Specials\DropOutAnimation.cs" />
+    <Compile Include="Specials\TakingOffAnimation.cs" />
     <Compile Include="Specials\RollOutAnimation.cs" />
     <Compile Include="Specials\RollInAnimation.cs" />
+    <Compile Include="Specials\LandingAnimation.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Attention\WobbleAnimation.cs" />
     <Compile Include="Attention\WaveAnimation.cs" />

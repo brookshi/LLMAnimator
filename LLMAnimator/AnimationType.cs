@@ -97,5 +97,7 @@ namespace LLM
         RollIn,
         RollOut,
         DropOut,
+        Landing,
+        TakingOff,
     }
 }
