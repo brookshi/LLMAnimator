@@ -34,11 +34,11 @@ namespace LLM.Animation
 
         public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = Utils.PrepareTransform(target, typeof(TranslateTransform));
+            var transform = Utils.PrepareTransform(target, typeof(CompositeTransform));
 
             var storyboard = PrepareStoryboard(continueWith);
 
-            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "Y");
+            AddAnimationToStoryboard(storyboard, transform, CreateAnimation(), "TranslateY");
 
             storyboard.Begin();
 

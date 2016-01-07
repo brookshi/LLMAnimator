@@ -34,14 +34,14 @@ namespace LLM.Animation
 
         public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = (RotateTransform)Utils.PrepareTransform(target, typeof(RotateTransform));
+            var transform = (CompositeTransform)Utils.PrepareTransform(target, typeof(CompositeTransform));
             transform.CenterX = Utils.GetCenterX(target);
             transform.CenterY = Utils.GetBottomY(target);
 
             var storyboard = PrepareStoryboard(continueWith);
 
             var anim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 12, -12, 3, -3, 0);
-            AddAnimationToStoryboard(storyboard, transform, anim, "Angle");
+            AddAnimationToStoryboard(storyboard, transform, anim, "Rotation");
 
             storyboard.Begin();
 

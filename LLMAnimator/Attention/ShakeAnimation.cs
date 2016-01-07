@@ -34,13 +34,13 @@ namespace LLM.Animation
 
         public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = Utils.PrepareTransform(target, typeof(TranslateTransform));
+            var transform = Utils.PrepareTransform(target, typeof(CompositeTransform));
 
             var storyboard = PrepareStoryboard(continueWith);
 
             var anim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 10, -10, 10, -10, 6, -6, 2, -2, 0);
 
-            AddAnimationToStoryboard(storyboard, transform, anim, "X");
+            AddAnimationToStoryboard(storyboard, transform, anim, "TranslateX");
             
             storyboard.Begin();
 

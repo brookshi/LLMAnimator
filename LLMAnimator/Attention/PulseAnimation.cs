@@ -35,8 +35,8 @@ namespace LLM.Animation
 
         public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = Utils.PrepareTransform(target, typeof(ScaleTransform));
-            Utils.SetCenterForScaleTransform(target, (ScaleTransform)transform);
+            var transform = (CompositeTransform)Utils.PrepareTransform(target, typeof(CompositeTransform));
+            Utils.SetCenterForCompositeTransform(target, transform);
 
             var storyboard = PrepareStoryboard(continueWith);
 

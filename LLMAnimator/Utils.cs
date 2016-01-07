@@ -150,6 +150,12 @@ namespace LLM
             transform.CenterY = GetCenterY(target);
         }
 
+        public static void SetCenterForCompositeTransform(UIElement target, CompositeTransform transform)
+        {
+            transform.CenterX = GetCenterX(target);
+            transform.CenterY = GetCenterY(target);
+        }
+
         public static double GetCenterX(UIElement target)
         {
             return target.RenderSize.Width / 2;
