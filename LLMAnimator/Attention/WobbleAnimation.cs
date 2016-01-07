@@ -32,22 +32,24 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(1000);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
-            transform.CenterX = AnimUtils.GetCenterX(target);
-            transform.CenterY = AnimUtils.GetCenterY(target);
+            var transform = (CompositeTransform)Utils.PrepareTransform(target, typeof(CompositeTransform));
+            transform.CenterX = Utils.GetCenterX(target);
+            transform.CenterY = Utils.GetCenterY(target);
 
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
             float WidthPerUnit = (float)(target.DesiredSize.Width / 100.0);
 
-            var translationAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -25 * WidthPerUnit, 20 * WidthPerUnit, -15 * WidthPerUnit, 10 * WidthPerUnit, -5 * WidthPerUnit, 0, 0);
+            var translationAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -25 * WidthPerUnit, 20 * WidthPerUnit, -15 * WidthPerUnit, 10 * WidthPerUnit, -5 * WidthPerUnit, 0, 0);
             AddAnimationToStoryboard(storyboard, transform, translationAnim, "TranslateX");
 
-            var rotateAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -5, 3, -3, 2, -1, 0);
+            var rotateAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -5, 3, -3, 2, -1, 0);
             AddAnimationToStoryboard(storyboard, transform, rotateAnim, "Rotation");
 
             storyboard.Begin();
+
+            return this;
         }
     }
 }

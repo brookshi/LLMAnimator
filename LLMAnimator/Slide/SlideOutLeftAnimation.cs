@@ -32,19 +32,21 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(1000);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
+            var transform = (CompositeTransform)Utils.PrepareTransform(target, typeof(CompositeTransform));
             target.Opacity = 1;
             transform.TranslateX = 0;
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
-            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
-            var translateAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, -AnimUtils.GetPointInParent(target).X - target.RenderSize.Width);
+            var opacityAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
+            var translateAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, -Utils.GetPointInParent(target).X - target.RenderSize.Width);
             AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
             AddAnimationToStoryboard(storyboard, transform, translateAnim, "TranslateX");
 
             storyboard.Begin();
+
+            return this;
         }
     }
 }

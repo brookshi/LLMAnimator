@@ -32,17 +32,19 @@ namespace LLM
 
         protected RepeatBehavior RepeatBehavior { get; set; } = new RepeatBehavior(1);
 
+        protected Storyboard Storyboard { get; set; } = new Storyboard();
+
         public IAnimation ContinueWith(Type type)
         {
             throw new NotImplementedException();
         }
 
-        public void PlayOn(UIElement target)
+        public IAnimation PlayOn(UIElement target)
         {
-            PlayOn(target, null);
+            return PlayOn(target, null);
         }
 
-        public abstract void PlayOn(UIElement target, Action ContinueWith);
+        public abstract IAnimation PlayOn(UIElement target, Action ContinueWith);
 
         public virtual IAnimation SetDelay(TimeSpan delay)
         {
@@ -62,19 +64,23 @@ namespace LLM
             return this;
         }
 
-        protected Storyboard CreateStoryboard(Action continueWith)
+        protected Storyboard PrepareStoryboard(Action continueWith)
         {
-            var storyboard = new Storyboard();
-            storyboard.Completed += (s, e) =>
+            Storyboard.Completed += (s, e) =>
             {
                 if (continueWith != null)
                     continueWith();
             };
 
-            storyboard.BeginTime = Delay;
-            storyboard.RepeatBehavior = RepeatBehavior;
+            Storyboard.BeginTime = Delay;
+            Storyboard.RepeatBehavior = RepeatBehavior;
 
-            return storyboard;
+            return Storyboard;
+        }
+
+        public virtual void Stop()
+        {
+            Storyboard.Stop();
         }
 
         protected void AddAnimationToStoryboard(Storyboard storyboard, DependencyObject target, Timeline anim, string property)

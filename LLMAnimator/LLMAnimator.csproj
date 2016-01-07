@@ -114,7 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimationBase.cs" />
-    <Compile Include="AnimUtils.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Attention\WobbleAnimation.cs" />
     <Compile Include="Attention\WaveAnimation.cs" />
     <Compile Include="Attention\TadaAnimation.cs" />
@@ -166,6 +166,7 @@
     <Compile Include="Slide\SlideOutUpAnimation.cs" />
     <Compile Include="Slide\SlideInUpAnimation.cs" />
     <Compile Include="Slide\SlideInDownAnimation.cs" />
+    <Compile Include="Specials\HingeAnimation.cs" />
     <Compile Include="Zoom\ZoomOutDownAnimation.cs" />
     <Compile Include="Zoom\ZoomOutLeftAnimation.cs" />
     <Compile Include="Zoom\ZoomOutRightAnimation.cs" />

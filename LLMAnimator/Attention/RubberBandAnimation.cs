@@ -32,18 +32,20 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(800);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = AnimUtils.PrepareTransform(target, typeof(ScaleTransform));
-            AnimUtils.SetCenterForScaleTransform(target, (ScaleTransform)transform);
+            var transform = Utils.PrepareTransform(target, typeof(ScaleTransform));
+            Utils.SetCenterForScaleTransform(target, (ScaleTransform)transform);
 
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
             AddAnimationToStoryboard(storyboard, transform, CreateAnimation(1.25), "ScaleX");
 
             AddAnimationToStoryboard(storyboard, transform, CreateAnimation(0.75), "ScaleY");
 
             storyboard.Begin();
+
+            return this;
         }
 
         Timeline CreateAnimation(double startValue)

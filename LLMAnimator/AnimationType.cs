@@ -92,5 +92,7 @@ namespace LLM
         ZoomOutUp,
         ZoomOutLeft,
         ZoomOutRight,
+
+        Hinge,
     }
 }

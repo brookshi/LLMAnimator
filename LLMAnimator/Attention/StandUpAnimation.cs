@@ -32,18 +32,20 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(1500);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var projection = (PlaneProjection)AnimUtils.PrepareProjection(target, typeof(PlaneProjection));
+            var projection = (PlaneProjection)Utils.PrepareProjection(target, typeof(PlaneProjection));
             projection.CenterOfRotationY = 1;
             projection.RotationX = -55;
 
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
-            var anim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 30, -15, 15, 0);
+            var anim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 30, -15, 15, 0);
             AddAnimationToStoryboard(storyboard, projection, anim, "RotationX ");
 
             storyboard.Begin();
+
+            return this;
         }
 
     }

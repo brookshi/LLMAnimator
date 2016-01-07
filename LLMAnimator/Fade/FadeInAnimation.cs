@@ -32,15 +32,17 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(500);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
             target.Opacity = 0;
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
-            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1);
+            var opacityAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1);
             AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
 
             storyboard.Begin();
+
+            return this;
         }
     }
 }

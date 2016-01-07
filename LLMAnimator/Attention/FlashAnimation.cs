@@ -32,13 +32,15 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(400);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
             AddAnimationToStoryboard(storyboard, target, CreateAnimation(), "Opacity");
             
             storyboard.Begin();
+
+            return this;
         }
 
         Timeline CreateAnimation()

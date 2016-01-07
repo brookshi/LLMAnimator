@@ -32,17 +32,19 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(1000);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = (RotateTransform)AnimUtils.PrepareTransform(target, typeof(RotateTransform));
-            transform.CenterX = AnimUtils.GetCenterX(target);
-            transform.CenterY = AnimUtils.GetCenterY(target);
+            var transform = (RotateTransform)Utils.PrepareTransform(target, typeof(RotateTransform));
+            transform.CenterX = Utils.GetCenterX(target);
+            transform.CenterY = Utils.GetCenterY(target);
 
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
             AddAnimationToStoryboard(storyboard, transform, CreateAnimation(10), "Angle");
 
             storyboard.Begin();
+
+            return this;
         }
 
         Timeline CreateAnimation(double startValue)

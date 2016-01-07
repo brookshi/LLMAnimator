@@ -32,24 +32,26 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(1000);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
-            transform.CenterX = AnimUtils.GetCenterX(target);
-            transform.CenterY = AnimUtils.GetCenterY(target);
+            var transform = (CompositeTransform)Utils.PrepareTransform(target, typeof(CompositeTransform));
+            transform.CenterX = Utils.GetCenterX(target);
+            transform.CenterY = Utils.GetCenterY(target);
 
-            var storyboard = CreateStoryboard(continueWith);
+            var storyboard = PrepareStoryboard(continueWith);
 
-            var scaleXAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
+            var scaleXAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
             AddAnimationToStoryboard(storyboard, transform, scaleXAnim, "ScaleX");
 
-            var scaleYAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
+            var scaleYAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
             AddAnimationToStoryboard(storyboard, transform, scaleYAnim, "ScaleY");
 
-            var rotateAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
+            var rotateAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
             AddAnimationToStoryboard(storyboard, transform, rotateAnim, "Rotation");
 
             storyboard.Begin();
+
+            return this;
         }
 
     }

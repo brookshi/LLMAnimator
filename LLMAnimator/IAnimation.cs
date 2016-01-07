@@ -26,9 +26,11 @@ namespace LLM
 {
     public interface IAnimation
     {
-        void PlayOn(UIElement target, Action ContinueWith);
+        IAnimation PlayOn(UIElement target, Action ContinueWith);
 
-        void PlayOn(UIElement target);
+        IAnimation PlayOn(UIElement target);
+
+        void Stop();
 
         IAnimation SetDuration(TimeSpan timeSpan);
 

@@ -26,7 +26,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace LLM
 {
-    public static class AnimUtils
+    public static class Utils
     {
         public static Timeline CreateAnimationWithValues(double duration, params double[] values)
         {

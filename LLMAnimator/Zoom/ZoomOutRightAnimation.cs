@@ -32,23 +32,25 @@ namespace LLM.Animation
             Duration = TimeSpan.FromMilliseconds(1000);
         }
 
-        public override void PlayOn(UIElement target, Action continueWith)
+        public override IAnimation PlayOn(UIElement target, Action continueWith)
         {
-            var transform = (CompositeTransform)AnimUtils.PrepareTransform(target, typeof(CompositeTransform));
-            transform.CenterX = AnimUtils.GetCenterX(target);
-            transform.CenterY = AnimUtils.GetCenterY(target);
-            var storyboard = CreateStoryboard(continueWith);
+            var transform = (CompositeTransform)Utils.PrepareTransform(target, typeof(CompositeTransform));
+            transform.CenterX = Utils.GetCenterX(target);
+            transform.CenterY = Utils.GetCenterY(target);
+            var storyboard = PrepareStoryboard(continueWith);
 
-            var opacityAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
-            var scaleXAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
-            var scaleYAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
-            var transformXAnim = AnimUtils.CreateAnimationWithValues(Duration.TotalMilliseconds, -30, AnimUtils.GetParentSize(target).Width - AnimUtils.GetPointInParent(target).X);
+            var opacityAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
+            var scaleXAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
+            var scaleYAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, 0);
+            var transformXAnim = Utils.CreateAnimationWithValues(Duration.TotalMilliseconds, -30, Utils.GetParentSize(target).Width - Utils.GetPointInParent(target).X);
             AddAnimationToStoryboard(storyboard, target, opacityAnim, "Opacity");
             AddAnimationToStoryboard(storyboard, transform, scaleXAnim, "ScaleX");
             AddAnimationToStoryboard(storyboard, transform, scaleYAnim, "ScaleY");
             AddAnimationToStoryboard(storyboard, transform, transformXAnim, "TranslateX");
 
             storyboard.Begin();
+
+            return this;
         }
     }
 }

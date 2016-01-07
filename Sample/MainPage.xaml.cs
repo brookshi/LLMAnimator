@@ -30,6 +30,7 @@ namespace Sample
         }
 
         private List<CustomAnim> CustomAnims = new List<CustomAnim>();
+        private IAnimation _anim;
 
         private void InitAnimList()
         {
@@ -53,7 +54,9 @@ namespace Sample
             {
                 Name = name,
                 ClickAction = () => {
-                    Animator.Use(type).PlayOn(AnimText);
+                    if (_anim != null)
+                        _anim.Stop();
+                    _anim = Animator.Use(type).PlayOn(AnimText);
                 }
             });
         }
